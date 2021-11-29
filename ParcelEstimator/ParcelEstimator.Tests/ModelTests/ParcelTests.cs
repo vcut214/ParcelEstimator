@@ -5,10 +5,6 @@ namespace ParcelEstimator.Tests.ModelTests
 {
     class ParcelTests
     {
-        [SetUp]
-        public void Setup()
-        {
-        }
 
         [Test]
         public void TestCreateParcel()
