@@ -7,7 +7,7 @@ namespace ParcelEstimator.Tests.ModelTests
     {
 
         [Test]
-        public void TestCreateParcel()
+        public void TestCreateLineItem()
         {
             // Arrange / Act
             LineItem newLineItem = new LineItem()
