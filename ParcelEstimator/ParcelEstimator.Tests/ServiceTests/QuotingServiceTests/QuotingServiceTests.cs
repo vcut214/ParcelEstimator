@@ -1,13 +1,13 @@
 ﻿using NUnit.Framework;
 using ParcelEstimator.Models;
-using ParcelEstimator.Services;
+using ParcelEstimator.Services.QuotingService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ParcelEstimator.Tests.ServiceTests
+namespace ParcelEstimator.Tests.ServiceTests.QuotingServiceTests
 {
     public class QuotingServiceTests
     {
