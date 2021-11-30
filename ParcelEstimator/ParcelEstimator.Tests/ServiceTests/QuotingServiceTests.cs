@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ParcelEstimator.Tests.ServiceTests
 {
-    public class ParcelQuotingServiceTests
+    public class QuotingServiceTests
     {
         [Test]
         public void TestCreateLineItemFromParcel_SmallParcel()
@@ -23,7 +23,7 @@ namespace ParcelEstimator.Tests.ServiceTests
             };
 
             // Act
-            var resultLineItem = ParcelQuotingService.CreateLineItemFromParcel(newParcel);
+            var resultLineItem = QuotingService.CreateLineItemFromParcel(newParcel);
 
             // Assert
             Assert.AreEqual(3.00, resultLineItem.Cost);
@@ -42,7 +42,7 @@ namespace ParcelEstimator.Tests.ServiceTests
             };
 
             // Act
-            var resultLineItem = ParcelQuotingService.CreateLineItemFromParcel(newParcel);
+            var resultLineItem = QuotingService.CreateLineItemFromParcel(newParcel);
 
             // Assert
             Assert.AreEqual(8.00, resultLineItem.Cost);
@@ -61,7 +61,7 @@ namespace ParcelEstimator.Tests.ServiceTests
             };
 
             // Act
-            var resultLineItem = ParcelQuotingService.CreateLineItemFromParcel(newParcel);
+            var resultLineItem = QuotingService.CreateLineItemFromParcel(newParcel);
 
             // Assert
             Assert.AreEqual(15.00, resultLineItem.Cost);
@@ -80,7 +80,7 @@ namespace ParcelEstimator.Tests.ServiceTests
             };
 
             // Act
-            var resultLineItem = ParcelQuotingService.CreateLineItemFromParcel(newParcel);
+            var resultLineItem = QuotingService.CreateLineItemFromParcel(newParcel);
 
             // Assert
             Assert.AreEqual(25.00, resultLineItem.Cost);
@@ -108,7 +108,7 @@ namespace ParcelEstimator.Tests.ServiceTests
             };
 
             // Act
-            var resultLineItems = ParcelQuotingService.GetQuoteForParcels(newParcels);
+            var resultLineItems = QuotingService.GetQuote(newParcels);
 
             // Assert
             foreach (var resultLineItem in resultLineItems)
@@ -139,7 +139,7 @@ namespace ParcelEstimator.Tests.ServiceTests
             };
 
             // Act
-            var resultLineItems = ParcelQuotingService.GetQuoteForParcels(newParcels);
+            var resultLineItems = QuotingService.GetQuote(newParcels);
 
             // Assert
             foreach (var resultLineItem in resultLineItems)
@@ -169,7 +169,7 @@ namespace ParcelEstimator.Tests.ServiceTests
             };
 
             // Act
-            var resultLineItems = ParcelQuotingService.GetQuoteForParcels(newParcels);
+            var resultLineItems = QuotingService.GetQuote(newParcels);
 
             // Assert
             foreach (var resultLineItem in resultLineItems)
@@ -199,7 +199,7 @@ namespace ParcelEstimator.Tests.ServiceTests
             };
 
             // Act
-            var resultLineItems = ParcelQuotingService.GetQuoteForParcels(newParcels);
+            var resultLineItems = QuotingService.GetQuote(newParcels);
 
             // Assert
             foreach (var resultLineItem in resultLineItems)

@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace ParcelEstimator.Services
 {
-    public static class ParcelQuotingService
+    public static class QuotingService
     {
         /// <summary>
         /// Method to retrieve a sequence of LineItems with a cost and description given a list of Parcels.
         /// </summary>
         /// <param name="parcels"></param>
         /// <returns>A sequence of LineItems</returns>
-        public static IEnumerable<LineItem> GetQuoteForParcels(IEnumerable<Parcel> parcels)
+        public static IEnumerable<LineItem> GetQuote(IEnumerable<Parcel> parcels)
         {
             return parcels.Select(x => CreateLineItemFromParcel(x));
         }
