@@ -209,7 +209,7 @@ namespace ParcelEstimator.Tests.ServiceTests.QuotingServiceTests
                     length: 500,
                     width: 400,
                     height: 500,
-                    weight: 100
+                    weight: 10
                 )
             };
 
@@ -222,6 +222,102 @@ namespace ParcelEstimator.Tests.ServiceTests.QuotingServiceTests
                 Assert.AreEqual(25, resultLineItem.Cost);
                 Assert.AreEqual("XL Parcel", resultLineItem.Description);
             }
+        }
+
+        [Test]
+        public void TestGetQuoteForParcels_OverweightSmallParcel()
+        {
+            // Arrange
+            var newParcels = new List<Parcel>
+            {
+                new Parcel
+                (
+                    length: 1,
+                    width: 1,
+                    height: 1,
+                    weight: 11
+                )
+            };
+
+            // Act
+            var resultLineItems = QuotingService.GetQuote(newParcels);
+
+            // Assert
+            var resultLineItem = resultLineItems.FirstOrDefault();
+            Assert.AreEqual(23, resultLineItem.Cost);
+            Assert.AreEqual("Small Parcel", resultLineItem.Description);
+        }
+
+        [Test]
+        public void TestGetQuoteForParcels_OverweightMediumParcel()
+        {
+            // Arrange
+            var newParcels = new List<Parcel>
+            {
+                new Parcel
+                (
+                    length: 49,
+                    width: 49,
+                    height: 49,
+                    weight: 13
+                )
+            };
+
+            // Act
+            var resultLineItems = QuotingService.GetQuote(newParcels);
+
+            // Assert
+            var resultLineItem = resultLineItems.FirstOrDefault();
+            Assert.AreEqual(28, resultLineItem.Cost);
+            Assert.AreEqual("Medium Parcel", resultLineItem.Description);
+        }
+
+        [Test]
+        public void TestGetQuoteForParcels_OverweightLargeParcel()
+        {
+            // Arrange
+            var newParcels = new List<Parcel>
+            {
+                new Parcel
+                (
+                    length: 99,
+                    width: 99,
+                    height: 99,
+                    weight: 16
+                )
+            };
+
+            // Act
+            var resultLineItems = QuotingService.GetQuote(newParcels);
+
+            // Assert
+            var resultLineItem = resultLineItems.FirstOrDefault();
+            Assert.AreEqual(35, resultLineItem.Cost);
+            Assert.AreEqual("Large Parcel", resultLineItem.Description);
+        }
+
+        [Test]
+        public void TestGetQuoteForParcels_OverweightXLParcel()
+        {
+            // Arrange
+            var newParcels = new List<Parcel>
+            {
+                new Parcel
+                (
+                    length: 100,
+                    width: 100,
+                    height: 100,
+                    weight: 20
+                )
+            };
+
+            // Act
+            var resultLineItems = QuotingService.GetQuote(newParcels);
+
+            // Assert
+            var resultLineItem = resultLineItems.FirstOrDefault();
+            Assert.AreEqual(45, resultLineItem.Cost);
+            Assert.AreEqual("XL Parcel", resultLineItem.Description);
         }
 
         [Test]

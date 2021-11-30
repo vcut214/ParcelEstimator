@@ -44,16 +44,7 @@ namespace ParcelEstimator.Services.QuotingService
         /// <returns>A LineItem generated from the Parcel</returns>
         internal static LineItem CreateLineItemFromParcel(Parcel parcel)
         {
-            double largestDimension = Math.Max(parcel.Length, Math.Max(parcel.Width, parcel.Height));
-
-            if (largestDimension < 10)
-                return new LineItem(3.00, "Small Parcel");
-            else if (largestDimension < 50)
-                return new LineItem(8.00, "Medium Parcel");
-            else if (largestDimension < 100)
-                return new LineItem(15.00, "Large Parcel");
-
-            return new LineItem(25.00, "XL Parcel");
+            return new LineItem(parcel.GetCost(), $"{parcel.Type.Size} Parcel");
         }
     }
 }
