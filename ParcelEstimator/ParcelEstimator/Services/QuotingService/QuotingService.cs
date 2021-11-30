@@ -17,7 +17,7 @@ namespace ParcelEstimator.Services.QuotingService
         /// <returns>A sequence of LineItems</returns>
         public static IEnumerable<LineItem> GetQuote(IEnumerable<Parcel> parcels)
         {
-            return parcels.Select(x => CreateLineItemFromParcel(x)); ;
+            return parcels.Select(x => CreateLineItemFromParcel(x));
         }
 
         /// <summary>
