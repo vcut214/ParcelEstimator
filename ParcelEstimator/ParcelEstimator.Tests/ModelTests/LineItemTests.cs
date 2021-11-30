@@ -7,14 +7,21 @@ namespace ParcelEstimator.Tests.ModelTests
     {
 
         [Test]
-        public void TestCreateLineItem()
+        public void TestCreateLineItemDefaultConstructor()
         {
             // Arrange / Act
-            LineItem newLineItem = new LineItem()
-            {
-                Cost = 500.50,
-                Description = "Random charge"
-            };
+            LineItem newLineItem = new LineItem();
+
+            // Assert
+            Assert.AreEqual(0, newLineItem.Cost);
+            Assert.AreEqual(null, newLineItem.Description);
+        }
+
+        [Test]
+        public void TestCreateLineItemOverloadedConstructor()
+        {
+            // Arrange / Act
+            LineItem newLineItem = new LineItem(500.50, "Random charge");
 
             // Assert
             Assert.AreEqual(500.50, newLineItem.Cost);

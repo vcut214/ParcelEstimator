@@ -17,5 +17,20 @@ namespace ParcelEstimator.Models
         /// Description of the line item.
         /// </summary>
         public string Description { get; set; }
+
+
+
+        public LineItem(double Cost, string Description)
+        {
+            this.Cost = Cost;
+            this.Description = Description;
+        }
+
+        public LineItem()
+        {
+            Cost = 0;
+            Description = null;
+        }
+
     }
 }
