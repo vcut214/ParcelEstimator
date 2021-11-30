@@ -27,7 +27,7 @@ namespace ParcelEstimator.Tests.ServiceTests
 
             // Assert
             Assert.AreEqual(3.00, resultLineItem.Cost);
-            Assert.AreEqual($"Small Parcel ({newParcel.Length}L x {newParcel.Width}W x {newParcel.Height}H)", resultLineItem.Description);
+            Assert.AreEqual("Small Parcel", resultLineItem.Description);
         }
 
         [Test]
@@ -46,7 +46,7 @@ namespace ParcelEstimator.Tests.ServiceTests
 
             // Assert
             Assert.AreEqual(8.00, resultLineItem.Cost);
-            Assert.AreEqual($"Medium Parcel ({newParcel.Length}L x {newParcel.Width}W x {newParcel.Height}H)", resultLineItem.Description);
+            Assert.AreEqual("Medium Parcel", resultLineItem.Description);
         }
 
         [Test]
@@ -65,7 +65,7 @@ namespace ParcelEstimator.Tests.ServiceTests
 
             // Assert
             Assert.AreEqual(15.00, resultLineItem.Cost);
-            Assert.AreEqual($"Large Parcel ({newParcel.Length}L x {newParcel.Width}W x {newParcel.Height}H)", resultLineItem.Description);
+            Assert.AreEqual("Large Parcel", resultLineItem.Description);
         }
 
         [Test]
@@ -84,7 +84,129 @@ namespace ParcelEstimator.Tests.ServiceTests
 
             // Assert
             Assert.AreEqual(25.00, resultLineItem.Cost);
-            Assert.AreEqual($"XL Parcel ({newParcel.Length}L x {newParcel.Width}W x {newParcel.Height}H)", resultLineItem.Description);
+            Assert.AreEqual("XL Parcel", resultLineItem.Description);
+        }
+
+        [Test]
+        public void TestGetQuoteForParcels_SmallParcels()
+        {
+            // Arrange
+            var newParcels = new List<Parcel>
+            {
+                new Parcel
+                {
+                    Length = 9,
+                    Width = 9,
+                    Height = 9
+                },
+                new Parcel
+                {
+                    Length = 1,
+                    Width = 1,
+                    Height = 1
+                }
+            };
+
+            // Act
+            var resultLineItems = ParcelQuotingService.GetQuoteForParcels(newParcels);
+
+            // Assert
+            foreach (var resultLineItem in resultLineItems)
+            {
+                Assert.AreEqual(3, resultLineItem.Cost);
+                Assert.AreEqual("Small Parcel", resultLineItem.Description);
+            }
+        }
+
+        [Test]
+        public void TestGetQuoteForParcels_MediumParcels()
+        {
+            // Arrange
+            var newParcels = new List<Parcel>
+            {
+                new Parcel
+                {
+                    Length = 10,
+                    Width = 9,
+                    Height = 9
+                },
+                new Parcel
+                {
+                    Length = 49,
+                    Width = 49,
+                    Height = 49
+                }
+            };
+
+            // Act
+            var resultLineItems = ParcelQuotingService.GetQuoteForParcels(newParcels);
+
+            // Assert
+            foreach (var resultLineItem in resultLineItems)
+            {
+                Assert.AreEqual(8, resultLineItem.Cost);
+                Assert.AreEqual("Medium Parcel", resultLineItem.Description);
+            }
+        }
+        [Test]
+        public void TestGetQuoteForParcels_LargeParcels()
+        {
+            // Arrange
+            var newParcels = new List<Parcel>
+            {
+                new Parcel
+                {
+                    Length = 49,
+                    Width = 50,
+                    Height = 49
+                },
+                new Parcel
+                {
+                    Length = 99,
+                    Width = 99,
+                    Height = 99
+                }
+            };
+
+            // Act
+            var resultLineItems = ParcelQuotingService.GetQuoteForParcels(newParcels);
+
+            // Assert
+            foreach (var resultLineItem in resultLineItems)
+            {
+                Assert.AreEqual(15, resultLineItem.Cost);
+                Assert.AreEqual("Large Parcel", resultLineItem.Description);
+            }
+        }
+        [Test]
+        public void TestGetQuoteForParcels_XLParcels()
+        {
+            // Arrange
+            var newParcels = new List<Parcel>
+            {
+                new Parcel
+                {
+                    Length = 100,
+                    Width = 99,
+                    Height = 99
+                },
+                new Parcel
+                {
+                    Length = 500,
+                    Width = 400,
+                    Height = 500
+                }
+            };
+
+            // Act
+            var resultLineItems = ParcelQuotingService.GetQuoteForParcels(newParcels);
+
+            // Assert
+            foreach (var resultLineItem in resultLineItems)
+            {
+                Assert.AreEqual(25, resultLineItem.Cost);
+                Assert.AreEqual("XL Parcel", resultLineItem.Description);
+            }
         }
     }
 }
