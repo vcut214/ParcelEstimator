@@ -16,12 +16,13 @@ namespace ParcelEstimator.Tests.ServiceTests.QuotingServiceTests
         public void TestCreateLineItemFromParcel_SmallParcel()
         {
             // Arrange
-            Parcel newParcel = new Parcel()
-            {
-                Length = 9,
-                Width = 9,
-                Height = 9
-            };
+            Parcel newParcel = new Parcel
+            (
+                length: 9,
+                width: 9,
+                height: 9,
+                weight: 1
+            );
 
             // Act
             var resultLineItem = QuotingService.CreateLineItemFromParcel(newParcel);
@@ -35,12 +36,13 @@ namespace ParcelEstimator.Tests.ServiceTests.QuotingServiceTests
         public void TestCreateLineItemFromParcel_MediumParcel()
         {
             // Arrange
-            Parcel newParcel = new Parcel()
-            {
-                Length = 9,
-                Width = 9,
-                Height = 10
-            };
+            Parcel newParcel = new Parcel
+            (
+                length: 9,
+                width: 9,
+                height: 10,
+                weight: 3
+            );
 
             // Act
             var resultLineItem = QuotingService.CreateLineItemFromParcel(newParcel);
@@ -54,12 +56,13 @@ namespace ParcelEstimator.Tests.ServiceTests.QuotingServiceTests
         public void TestCreateLineItemFromParcel_LargeParcel()
         {
             // Arrange
-            Parcel newParcel = new Parcel()
-            {
-                Length = 50,
-                Width = 49,
-                Height = 49
-            };
+            Parcel newParcel = new Parcel
+            (
+                length: 50,
+                width: 49,
+                height: 49,
+                weight: 6
+            );
 
             // Act
             var resultLineItem = QuotingService.CreateLineItemFromParcel(newParcel);
@@ -73,12 +76,13 @@ namespace ParcelEstimator.Tests.ServiceTests.QuotingServiceTests
         public void TestCreateLineItemFromParcel_XLParcel()
         {
             // Arrange
-            Parcel newParcel = new Parcel()
-            {
-                Length = 101,
-                Width = 100,
-                Height = 100
-            };
+            Parcel newParcel = new Parcel
+            (
+                length: 101,
+                width: 100,
+                height: 100,
+                weight: 10
+            );
 
             // Act
             var resultLineItem = QuotingService.CreateLineItemFromParcel(newParcel);
@@ -95,17 +99,19 @@ namespace ParcelEstimator.Tests.ServiceTests.QuotingServiceTests
             var newParcels = new List<Parcel>
             {
                 new Parcel
-                {
-                    Length = 9,
-                    Width = 9,
-                    Height = 9
-                },
+                (
+                    length: 9,
+                    width: 9,
+                    height: 9,
+                    weight: 1
+                ),
                 new Parcel
-                {
-                    Length = 1,
-                    Width = 1,
-                    Height = 1
-                }
+                (
+                    length: 1,
+                    width: 1,
+                    height: 1,
+                    weight: 1
+                )
             };
 
             // Act
@@ -126,17 +132,19 @@ namespace ParcelEstimator.Tests.ServiceTests.QuotingServiceTests
             var newParcels = new List<Parcel>
             {
                 new Parcel
-                {
-                    Length = 10,
-                    Width = 9,
-                    Height = 9
-                },
+                (
+                    length: 10,
+                    width: 9,
+                    height: 9,
+                    weight: 3
+                ),
                 new Parcel
-                {
-                    Length = 49,
-                    Width = 49,
-                    Height = 49
-                }
+                (
+                    length: 49,
+                    width: 49,
+                    height: 49,
+                    weight: 2
+                )
             };
 
             // Act
@@ -157,17 +165,19 @@ namespace ParcelEstimator.Tests.ServiceTests.QuotingServiceTests
             var newParcels = new List<Parcel>
             {
                 new Parcel
-                {
-                    Length = 49,
-                    Width = 50,
-                    Height = 49
-                },
+                (
+                    length: 49,
+                    width: 50,
+                    height: 49,
+                    weight: 6
+                ),
                 new Parcel
-                {
-                    Length = 99,
-                    Width = 99,
-                    Height = 99
-                }
+                (
+                    length: 99,
+                    width: 99,
+                    height: 99,
+                    weight: 5
+                )
             };
 
             // Act
@@ -188,17 +198,19 @@ namespace ParcelEstimator.Tests.ServiceTests.QuotingServiceTests
             var newParcels = new List<Parcel>
             {
                 new Parcel
-                {
-                    Length = 100,
-                    Width = 99,
-                    Height = 99
-                },
+                (
+                    length: 100,
+                    width: 99,
+                    height: 99,
+                    weight: 10
+                ),
                 new Parcel
-                {
-                    Length = 500,
-                    Width = 400,
-                    Height = 500
-                }
+                (
+                    length: 500,
+                    width: 400,
+                    height: 500,
+                    weight: 100
+                )
             };
 
             // Act
@@ -219,17 +231,19 @@ namespace ParcelEstimator.Tests.ServiceTests.QuotingServiceTests
             var newParcels = new List<Parcel>
             {
                 new Parcel
-                {
-                    Length = 100,
-                    Width = 99,
-                    Height = 99
-                },
+                (
+                    length: 100,
+                    width: 99,
+                    height: 99,
+                    weight: 10
+                ),
                 new Parcel
-                {
-                    Length = 500,
-                    Width = 400,
-                    Height = 500
-                }
+                (
+                    length: 500,
+                    width: 400,
+                    height: 500,
+                    weight: 10
+                )
             };
 
             var extras = new List<IOptionalExtra>
