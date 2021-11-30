@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using ParcelEstimator.Models;
 using ParcelEstimator.Services.QuotingService;
+using ParcelEstimator.Services.QuotingService.OptionalExtras;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -148,6 +149,7 @@ namespace ParcelEstimator.Tests.ServiceTests.QuotingServiceTests
                 Assert.AreEqual("Medium Parcel", resultLineItem.Description);
             }
         }
+
         [Test]
         public void TestGetQuoteForParcels_LargeParcels()
         {
@@ -178,6 +180,7 @@ namespace ParcelEstimator.Tests.ServiceTests.QuotingServiceTests
                 Assert.AreEqual("Large Parcel", resultLineItem.Description);
             }
         }
+
         [Test]
         public void TestGetQuoteForParcels_XLParcels()
         {
@@ -207,6 +210,39 @@ namespace ParcelEstimator.Tests.ServiceTests.QuotingServiceTests
                 Assert.AreEqual(25, resultLineItem.Cost);
                 Assert.AreEqual("XL Parcel", resultLineItem.Description);
             }
+        }
+
+        [Test]
+        public void TestGetQuote_WithSpeedyShipping()
+        {
+            // Arrange
+            var newParcels = new List<Parcel>
+            {
+                new Parcel
+                {
+                    Length = 100,
+                    Width = 99,
+                    Height = 99
+                },
+                new Parcel
+                {
+                    Length = 500,
+                    Width = 400,
+                    Height = 500
+                }
+            };
+
+            var extras = new List<IOptionalExtra>
+            {
+                new SpeedyShippingOptionalExtra()
+            };
+
+            // Act
+            var resultLineItems = QuotingService.GetQuoteWithOptions(newParcels, extras);
+
+            // Assert
+            Assert.AreEqual(50, resultLineItems.Last().Cost);
+            Assert.AreEqual("Speedy Shipping", resultLineItems.Last().Description);
         }
     }
 }
